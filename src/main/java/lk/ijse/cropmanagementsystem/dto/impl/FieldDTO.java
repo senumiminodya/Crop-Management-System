@@ -1,5 +1,6 @@
 package lk.ijse.cropmanagementsystem.dto.impl;
 
+import lk.ijse.cropmanagementsystem.dto.FieldStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class FieldDTO {
+public class FieldDTO implements FieldStatus {
     private String fieldCode;
     private String fieldName;
     private Point fieldLocation;

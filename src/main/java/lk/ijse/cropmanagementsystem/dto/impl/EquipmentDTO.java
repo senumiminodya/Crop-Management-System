@@ -1,5 +1,8 @@
 package lk.ijse.cropmanagementsystem.dto.impl;
 
+import lk.ijse.cropmanagementsystem.dto.EquipmentStatus;
+import lk.ijse.cropmanagementsystem.entity.EquipmentType;
+import lk.ijse.cropmanagementsystem.entity.StatusOfEquipment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class EquipmentDTO {
+public class EquipmentDTO implements EquipmentStatus {
     private String equipmentId;
     private String name;
-    private String type;
-    private String status;
-    private StaffDTO assignedStaff;
-    private FieldDTO assignedField;
+    private EquipmentType type;
+    private StatusOfEquipment status;
+    private String staffId;
+    private String fieldCode;
 }

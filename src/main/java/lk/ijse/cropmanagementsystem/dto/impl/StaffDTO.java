@@ -1,5 +1,6 @@
 package lk.ijse.cropmanagementsystem.dto.impl;
 
+import lk.ijse.cropmanagementsystem.dto.StaffStatus;
 import lk.ijse.cropmanagementsystem.entity.Gender;
 import lk.ijse.cropmanagementsystem.entity.Role;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StaffDTO {
+public class StaffDTO implements StaffStatus {
     private String id;
     private String firstName;
     private String lastName;

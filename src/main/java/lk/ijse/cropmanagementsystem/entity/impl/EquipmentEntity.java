@@ -1,7 +1,7 @@
 package lk.ijse.cropmanagementsystem.entity.impl;
 
 import jakarta.persistence.*;
-import lk.ijse.cropmanagementsystem.entity.EquipmentStatus;
+import lk.ijse.cropmanagementsystem.entity.StatusOfEquipment;
 import lk.ijse.cropmanagementsystem.entity.EquipmentType;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class EquipmentEntity implements SuperEntity {
     private EquipmentType type;
 
     @Enumerated(EnumType.STRING)
-    private EquipmentStatus status;
+    private StatusOfEquipment status;
 
     @ManyToOne
     @JoinColumn(name = "staffId")

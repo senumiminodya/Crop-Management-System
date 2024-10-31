@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SelectedClassesErrorStatus implements CropStatus, EquipmentStatus, FieldStatus, MonitoringLogStatus, StaffStatus, UserStatus, VehicleStatus {
+public class SelectedClassesErrorStatus implements CropStatus, EquipmentStatus, FieldStatus, MonitoringLogStatus, StaffStatus, VehicleStatus, Serializable, SuperDTO {
     private int status;
     private String statusMessage;
 }

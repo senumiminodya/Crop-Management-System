@@ -63,16 +63,6 @@ public class Mapping {
     public List<StaffDTO> asStaffDtoList(List<StaffEntity> staffEntities) {
         return modelMapper.map(staffEntities, new TypeToken<List<StaffDTO>>() {}.getType());
     }
-    //for user mapping
-    public UserEntity toUserEntity(UserDTO userDTO) {
-        return modelMapper.map(userDTO, UserEntity.class);
-    }
-    public UserDTO toUserDto(UserEntity userEntity) {
-        return modelMapper.map(userEntity, UserDTO.class);
-    }
-    public List<UserDTO> asUserDtoList(List<UserEntity> userEntities) {
-        return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>() {}.getType());
-    }
     //for vehicle mapping
     public VehicleEntity toVehicleEntity(VehicleDTO vehicleDTO) {
         return modelMapper.map(vehicleDTO, VehicleEntity.class);

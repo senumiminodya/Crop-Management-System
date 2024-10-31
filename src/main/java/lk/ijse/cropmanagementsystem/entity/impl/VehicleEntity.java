@@ -1,6 +1,7 @@
 package lk.ijse.cropmanagementsystem.entity.impl;
 
 import jakarta.persistence.*;
+import lk.ijse.cropmanagementsystem.entity.StatusOfVehicle;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class VehicleEntity implements SuperEntity {
     private String licensePlateNumber;
     private String category;
     private String fuelType;
-    private String status;
+    private StatusOfVehicle status;
 
     @ManyToOne
     @JoinColumn(name = "staffId")

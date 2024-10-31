@@ -1,5 +1,6 @@
 package lk.ijse.cropmanagementsystem.dto.impl;
 
+import lk.ijse.cropmanagementsystem.dto.MonitoringLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class MonitoringLogDTO {
+public class MonitoringLogDTO implements MonitoringLogStatus {
     private String logCode;
     private Date logDate;
     private String logDetails;

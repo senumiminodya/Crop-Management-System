@@ -18,6 +18,8 @@ public class VehicleEntity implements SuperEntity {
     private String licensePlateNumber;
     private String category;
     private String fuelType;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private StatusOfVehicle status;
 
     @ManyToOne

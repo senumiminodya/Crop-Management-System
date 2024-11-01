@@ -8,6 +8,7 @@ import org.springframework.data.geo.Point;
 
 import java.util.List;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,8 +17,7 @@ public class FieldDTO implements FieldStatus {
     private String fieldName;
     private Point fieldLocation;
     private double extentSize;
-    private List<CropDTO> crops;
-    private List<StaffDTO> staff;
     private String fieldImage1;
     private String fieldImage2;
+    private List<String> staff;
 }

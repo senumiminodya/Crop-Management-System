@@ -7,9 +7,13 @@ import lk.ijse.cropmanagementsystem.dto.impl.EquipmentDTO;
 import lk.ijse.cropmanagementsystem.entity.EquipmentType;
 import lk.ijse.cropmanagementsystem.entity.StatusOfEquipment;
 import lk.ijse.cropmanagementsystem.entity.impl.EquipmentEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.StaffEntity;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.EquipmentNotFoundException;
 import lk.ijse.cropmanagementsystem.repository.EquipmentRepo;
+import lk.ijse.cropmanagementsystem.repository.FieldRepo;
+import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import lk.ijse.cropmanagementsystem.service.EquipmentService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
 import lk.ijse.cropmanagementsystem.util.Mapping;
@@ -25,12 +29,24 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Autowired
     private EquipmentRepo equipmentRepo;
     @Autowired
+    private StaffRepo staffRepo;
+    @Autowired
+    private FieldRepo fieldRepo;
+    @Autowired
     private Mapping equipmentMapping;
     @Override
     public void saveEquipment(EquipmentDTO equipmentDTO) {
         equipmentDTO.setEquipmentId(AppUtil.generateEquipmentId());
+        // Fetch related entities for staff and field
+        StaffEntity staff = staffRepo.findById(equipmentDTO.getStaffId())
+                .orElseThrow(() -> new DataPersistException("Staff not found"));
+        FieldEntity field = fieldRepo.findById(equipmentDTO.getFieldCode())
+                .orElseThrow(() -> new DataPersistException("Field not found"));
+
+        // Map to EquipmentEntity with related entities
+        EquipmentEntity equipmentEntity = equipmentMapping.toEquipmentEntity(equipmentDTO, staff, field);
         EquipmentEntity savedEquipment =
-                equipmentRepo.save(equipmentMapping.toEquipmentEntity(equipmentDTO));
+                equipmentRepo.save(equipmentEntity);
         if(savedEquipment == null){
             throw new DataPersistException("Equipment not saved");
         }

@@ -14,7 +14,7 @@ import java.util.List;
 public class MonitoringLogDTO implements MonitoringLogStatus {
     private String logCode;
     private Date logDate;
-    private String logDetails;
+    private String observation;
     private String observedImage;
     private List<FieldDTO> fields;
     private List<CropDTO> crops;

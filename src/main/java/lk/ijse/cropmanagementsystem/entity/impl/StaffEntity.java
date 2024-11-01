@@ -41,8 +41,8 @@ public class StaffEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToMany(mappedBy = "staff")
-    private List<FieldEntity> fields;
+    /*@ManyToMany(mappedBy = "staff")
+    private List<FieldEntity> fields;*/
 
     @OneToMany(mappedBy = "staff")
     private List<VehicleEntity> vehicles;

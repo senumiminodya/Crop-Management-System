@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class VehicleDTO implements VehicleStatus {
     private String vehicleCode;
     private String licensePlateNumber;
-    private String vehicleCategory;
+    private String category;
     private String fuelType;
     private StatusOfVehicle status;
     private String staffId;

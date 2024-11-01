@@ -29,6 +29,6 @@ public class StaffDTO implements StaffStatus {
     private String contactNo;
     private String email;
     private Role role;
-    private List<FieldDTO> fields;
+    /*private List<String> fieldCodes;*/
     private List<VehicleDTO> vehicles;
 }

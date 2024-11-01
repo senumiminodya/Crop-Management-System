@@ -2,6 +2,7 @@ package lk.ijse.cropmanagementsystem.util;
 
 import lk.ijse.cropmanagementsystem.dto.impl.*;
 import lk.ijse.cropmanagementsystem.entity.impl.*;
+import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.List;
 public class Mapping {
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private StaffRepo staffRepo;
     //for crop mapping
     public CropEntity toCropEntity(CropDTO cropDTO) {
         return modelMapper.map(cropDTO, CropEntity.class);
@@ -24,8 +27,11 @@ public class Mapping {
         return modelMapper.map(cropEntities, new TypeToken<List<CropDTO>>() {}.getType());
     }
     //for equipment mapping
-    public EquipmentEntity toEquipmentEntity(EquipmentDTO equipmentDTO) {
-        return modelMapper.map(equipmentDTO, EquipmentEntity.class);
+    public EquipmentEntity toEquipmentEntity(EquipmentDTO equipmentDTO, StaffEntity staff, FieldEntity field) {
+        EquipmentEntity equipmentEntity = modelMapper.map(equipmentDTO, EquipmentEntity.class);
+        equipmentEntity.setAssignedStaff(staff);
+        equipmentEntity.setAssignedField(field);
+        return equipmentEntity;
     }
     public EquipmentDTO toEquipmentDto(EquipmentEntity equipmentEntity) {
         return modelMapper.map(equipmentEntity, EquipmentDTO.class);
@@ -35,6 +41,7 @@ public class Mapping {
     }
     //for field mapping
     public FieldEntity toFieldEntity(FieldDTO fieldDTO) {
+
         return modelMapper.map(fieldDTO, FieldEntity.class);
     }
     public FieldDTO toFieldDto(FieldEntity fieldEntity) {
@@ -65,7 +72,12 @@ public class Mapping {
     }
     //for vehicle mapping
     public VehicleEntity toVehicleEntity(VehicleDTO vehicleDTO) {
-        return modelMapper.map(vehicleDTO, VehicleEntity.class);
+        VehicleEntity vehicleEntity = modelMapper.map(vehicleDTO, VehicleEntity.class);
+        if (vehicleDTO.getStaffId() != null) {
+            StaffEntity staff = staffRepo.findById(vehicleDTO.getStaffId()).orElse(null);
+            vehicleEntity.setStaff(staff);
+        }
+        return vehicleEntity;
     }
     public VehicleDTO toVehicleDto(VehicleEntity vehicleEntity) {
         return modelMapper.map(vehicleEntity, VehicleDTO.class);

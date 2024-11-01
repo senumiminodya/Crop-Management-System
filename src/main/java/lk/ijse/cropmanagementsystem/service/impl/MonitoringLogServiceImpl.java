@@ -66,7 +66,7 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
             throw new MonitoringLogNotFoundException("Log not found");
         }else {
             findLog.get().setLogDate(monitoringLogDTO.getLogDate());
-            findLog.get().setObservation(monitoringLogDTO.getLogDetails());
+            findLog.get().setObservation(monitoringLogDTO.getObservation());
             findLog.get().setObservedImage(monitoringLogDTO.getObservedImage());
         }
     }

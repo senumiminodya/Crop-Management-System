@@ -5,9 +5,11 @@ import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.FieldStatus;
 import lk.ijse.cropmanagementsystem.dto.impl.FieldDTO;
 import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.StaffEntity;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.FieldNotFoundException;
 import lk.ijse.cropmanagementsystem.repository.FieldRepo;
+import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import lk.ijse.cropmanagementsystem.service.FieldService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
 import lk.ijse.cropmanagementsystem.util.Mapping;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -23,15 +26,27 @@ public class FieldServiceImpl implements FieldService {
     @Autowired
     private FieldRepo fieldRepo;
     @Autowired
+    private StaffRepo staffRepo;
+    @Autowired
     private Mapping fieldMapping;
     @Override
     public void saveField(FieldDTO fieldDTO) {
         fieldDTO.setFieldCode(AppUtil.generateFieldCode());
-        FieldEntity savedField =
+
+        /*FieldEntity savedField =
                 fieldRepo.save(fieldMapping.toFieldEntity(fieldDTO));
         if(savedField == null){
             throw new DataPersistException("Field not saved");
-        }
+        }*/
+        // Load existing staff entities (by ID) and set them to fieldEntity
+        FieldEntity fieldEntity = fieldMapping.toFieldEntity(fieldDTO);
+        List<StaffEntity> staffEntities = fieldDTO.getStaff().stream()
+                .map(staffId -> staffRepo.getReferenceById(staffId)) // uses a proxy to avoid unsaved entities
+                .collect(Collectors.toList());
+        fieldEntity.setStaff(staffEntities);
+
+        // Save fieldEntity which now has managed StaffEntity references
+        fieldRepo.save(fieldEntity);
     }
 
     @Override

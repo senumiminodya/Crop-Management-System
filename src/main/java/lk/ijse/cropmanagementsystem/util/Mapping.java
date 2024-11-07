@@ -75,6 +75,12 @@ public class Mapping {
         VehicleEntity vehicleEntity = modelMapper.map(vehicleDTO, VehicleEntity.class);
         if (vehicleDTO.getStaffId() != null) {
             StaffEntity staff = staffRepo.findById(vehicleDTO.getStaffId()).orElse(null);
+            if (staff != null) {
+                vehicleEntity.setStaff(staff);
+            } else {
+                // Log or handle the scenario where staff is not found in the database
+                System.out.println("Staff with ID " + vehicleDTO.getStaffId() + " not found.");
+            }
             vehicleEntity.setStaff(staff);
         }
         return vehicleEntity;

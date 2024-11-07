@@ -4,9 +4,12 @@ import jakarta.transaction.Transactional;
 import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.VehicleStatus;
 import lk.ijse.cropmanagementsystem.dto.impl.VehicleDTO;
+import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.StaffEntity;
 import lk.ijse.cropmanagementsystem.entity.impl.VehicleEntity;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.VehicleNotFoundException;
+import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import lk.ijse.cropmanagementsystem.repository.VehicleRepo;
 import lk.ijse.cropmanagementsystem.service.VehicleService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
@@ -22,6 +25,8 @@ import java.util.Optional;
 public class VehicleServiceImpl implements VehicleService {
     @Autowired
     private VehicleRepo vehicleRepo;
+    @Autowired
+    private StaffRepo staffRepo;
     @Autowired
     private Mapping vehicleMapping;
     @Override
@@ -70,6 +75,9 @@ public class VehicleServiceImpl implements VehicleService {
             findVehicle.get().setFuelType(vehicleDTO.getFuelType());
             findVehicle.get().setStatus(vehicleDTO.getStatus());
             findVehicle.get().setRemarks(vehicleDTO.getRemarks());
+            StaffEntity staff = staffRepo.findById(vehicleDTO.getStaffId())
+                    .orElseThrow(() -> new DataPersistException("Staff not found"));
+            findVehicle.get().setStaff(staff);
         }
     }
 }

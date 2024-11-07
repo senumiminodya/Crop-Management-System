@@ -85,6 +85,10 @@ public class FieldServiceImpl implements FieldService {
             findField.get().setExtentSize(fieldDTO.getExtentSize());
             findField.get().setFieldImage1(fieldDTO.getFieldImage1());
             findField.get().setFieldImage2(fieldDTO.getFieldImage2());
+            List<StaffEntity> staffEntities = fieldDTO.getStaff().stream()
+                    .map(staffId -> staffRepo.getReferenceById(staffId)) // uses a proxy to avoid unsaved entities
+                    .collect(Collectors.toList());
+            findField.get().setStaff(staffEntities);
         }
     }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.cropmanagementsystem.entity.impl;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lk.ijse.cropmanagementsystem.entity.Gender;
 import lk.ijse.cropmanagementsystem.entity.Role;
@@ -44,7 +45,8 @@ public class StaffEntity implements SuperEntity {
     /*@ManyToMany(mappedBy = "staff")
     private List<FieldEntity> fields;*/
 
-    @OneToMany(mappedBy = "staff")
+    @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<VehicleEntity> vehicles;
 
 }

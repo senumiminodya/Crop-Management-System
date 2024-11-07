@@ -3,17 +3,27 @@ package lk.ijse.cropmanagementsystem.service.impl;
 import jakarta.transaction.Transactional;
 import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.MonitoringLogStatus;
+import lk.ijse.cropmanagementsystem.dto.impl.CropDTO;
+import lk.ijse.cropmanagementsystem.dto.impl.FieldDTO;
 import lk.ijse.cropmanagementsystem.dto.impl.MonitoringLogDTO;
+import lk.ijse.cropmanagementsystem.dto.impl.StaffDTO;
+import lk.ijse.cropmanagementsystem.entity.impl.CropEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
 import lk.ijse.cropmanagementsystem.entity.impl.MonitoringLogEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.StaffEntity;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.MonitoringLogNotFoundException;
+import lk.ijse.cropmanagementsystem.repository.CropRepo;
+import lk.ijse.cropmanagementsystem.repository.FieldRepo;
 import lk.ijse.cropmanagementsystem.repository.MonitoringLogRepo;
+import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import lk.ijse.cropmanagementsystem.service.MonitoringLogService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
 import lk.ijse.cropmanagementsystem.util.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +32,12 @@ import java.util.Optional;
 public class MonitoringLogServiceImpl implements MonitoringLogService {
     @Autowired
     private MonitoringLogRepo logRepo;
+    @Autowired
+    private FieldRepo fieldRepo;
+    @Autowired
+    private CropRepo cropRepo;
+    @Autowired
+    private StaffRepo staffRepo;
     @Autowired
     private Mapping logMapping;
     @Override
@@ -68,6 +84,27 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
             findLog.get().setLogDate(monitoringLogDTO.getLogDate());
             findLog.get().setObservation(monitoringLogDTO.getObservation());
             findLog.get().setObservedImage(monitoringLogDTO.getObservedImage());
+            List<FieldEntity> fieldEntities = new ArrayList<>();
+            for (FieldDTO field : monitoringLogDTO.getFields()) {
+                FieldEntity fieldEntity = fieldRepo.findById(field.getFieldCode())
+                        .orElseThrow(() -> new DataPersistException("Field not found"));
+                fieldEntities.add(fieldEntity);
+            }
+            findLog.get().setFields(fieldEntities);
+            List<CropEntity> cropEntities = new ArrayList<>();
+            for (CropDTO crop : monitoringLogDTO.getCrops()) {
+                CropEntity cropEntity = cropRepo.findById(crop.getCropCode())
+                        .orElseThrow(() -> new DataPersistException("Crop not found"));
+                cropEntities.add(cropEntity);
+            }
+            findLog.get().setCrops(cropEntities);
+            List<StaffEntity> staffEntities = new ArrayList<>();
+            for (StaffDTO staff: monitoringLogDTO.getStaff()) {
+                StaffEntity staffEntity = staffRepo.findById(staff.getId())
+                        .orElseThrow(() -> new DataPersistException("Staff not found"));
+                staffEntities.add(staffEntity);
+            }
+            findLog.get().setStaff(staffEntities);
         }
     }
 }

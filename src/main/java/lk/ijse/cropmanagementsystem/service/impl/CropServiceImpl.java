@@ -5,9 +5,11 @@ import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.CropStatus;
 import lk.ijse.cropmanagementsystem.dto.impl.CropDTO;
 import lk.ijse.cropmanagementsystem.entity.impl.CropEntity;
+import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
 import lk.ijse.cropmanagementsystem.exception.CropNotFoundException;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.repository.CropRepo;
+import lk.ijse.cropmanagementsystem.repository.FieldRepo;
 import lk.ijse.cropmanagementsystem.service.CropService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
 import lk.ijse.cropmanagementsystem.util.Mapping;
@@ -22,6 +24,8 @@ import java.util.Optional;
 public class CropServiceImpl implements CropService {
     @Autowired
     private CropRepo cropRepo;
+    @Autowired
+    private FieldRepo fieldRepo;
     @Autowired
     private Mapping cropMapping;
     @Override
@@ -70,6 +74,9 @@ public class CropServiceImpl implements CropService {
             findCrop.get().setCropImage(cropDTO.getCropImage());
             findCrop.get().setCategory(cropDTO.getCategory());
             findCrop.get().setSeason(cropDTO.getCropSeason());
+            FieldEntity field = fieldRepo.findById(cropDTO.getFieldCode())
+                    .orElseThrow(() -> new DataPersistException("Field not found"));
+            findCrop.get().setField(field);
         }
     }
 }

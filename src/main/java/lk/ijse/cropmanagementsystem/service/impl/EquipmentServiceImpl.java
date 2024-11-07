@@ -4,8 +4,6 @@ import jakarta.transaction.Transactional;
 import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.EquipmentStatus;
 import lk.ijse.cropmanagementsystem.dto.impl.EquipmentDTO;
-import lk.ijse.cropmanagementsystem.entity.EquipmentType;
-import lk.ijse.cropmanagementsystem.entity.StatusOfEquipment;
 import lk.ijse.cropmanagementsystem.entity.impl.EquipmentEntity;
 import lk.ijse.cropmanagementsystem.entity.impl.FieldEntity;
 import lk.ijse.cropmanagementsystem.entity.impl.StaffEntity;
@@ -86,6 +84,12 @@ public class EquipmentServiceImpl implements EquipmentService {
             findEquipment.get().setName(equipmentDTO.getName());
             findEquipment.get().setType(equipmentDTO.getType());
             findEquipment.get().setStatus(equipmentDTO.getStatus());
+            FieldEntity field = fieldRepo.findById(equipmentDTO.getFieldCode())
+                    .orElseThrow(() -> new DataPersistException("Field not found"));
+            findEquipment.get().setAssignedField(field);
+            StaffEntity staffEntity = staffRepo.findById(equipmentDTO.getStaffId())
+                    .orElseThrow(() -> new DataPersistException("Staff not found"));
+            findEquipment.get().setAssignedStaff(staffEntity);
         }
     }
 }

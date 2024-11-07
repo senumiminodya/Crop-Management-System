@@ -1,5 +1,6 @@
 package lk.ijse.cropmanagementsystem.entity.impl;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lk.ijse.cropmanagementsystem.entity.StatusOfVehicle;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
@@ -24,6 +25,7 @@ public class VehicleEntity implements SuperEntity {
 
     @ManyToOne
     @JoinColumn(name = "staffId")
+    @JsonBackReference
     private StaffEntity staff;
 
     private String remarks;

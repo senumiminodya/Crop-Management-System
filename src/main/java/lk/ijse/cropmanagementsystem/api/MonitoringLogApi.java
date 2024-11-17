@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/logs")
+@CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class MonitoringLogApi {
     @Autowired
     private MonitoringLogService logService;

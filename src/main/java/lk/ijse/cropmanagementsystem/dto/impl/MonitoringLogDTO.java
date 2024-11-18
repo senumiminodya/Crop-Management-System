@@ -19,4 +19,13 @@ public class MonitoringLogDTO implements MonitoringLogStatus {
     private List<FieldDTO> fields;
     private List<CropDTO> crops;
     private List<StaffDTO> staff;
+
+    public MonitoringLogDTO(Date logDate, String observation, String observedImage, List<FieldDTO> fields, List<CropDTO> crops, List<StaffDTO> staff) {
+        this.logDate = logDate;
+        this.observation = observation;
+        this.observedImage = observedImage;
+        this.fields = fields;
+        this.crops = crops;
+        this.staff = staff;
+    }
 }

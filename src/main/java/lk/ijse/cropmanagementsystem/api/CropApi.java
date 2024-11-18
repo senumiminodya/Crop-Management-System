@@ -12,20 +12,38 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/crops")
-@CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CropApi {
     @Autowired
     private CropService cropService;
+    // Directory for saving images
+    private final String uploadDir = "src/main/resources/uploads/";
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> saveCrop(@RequestBody CropDTO cropDTO) {
+    public ResponseEntity<Void> saveCrop(
+            @RequestParam("cropCommonName") String commonName,
+            @RequestParam("cropScientificName") String scientificName,
+            @RequestParam("cropImage") MultipartFile cropImage,
+            @RequestParam("category") String category,
+            @RequestParam("cropSeason") String season,
+            @RequestParam("fieldCode") String fieldCode) {
         try {
+            // Save the image and get its path
+            String imagePath = saveImage(cropImage);
+            // Create CropDTO
+            CropDTO cropDTO = new CropDTO(commonName, scientificName, imagePath, category, season, fieldCode);
             cropService.saveCrop(cropDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e){
@@ -35,6 +53,23 @@ public class CropApi {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    private String saveImage(MultipartFile file) throws IOException {
+        // Ensure the directory exists
+        Path uploadPath = Paths.get(uploadDir);
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        // Generate a unique file name
+        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+        Path filePath = uploadPath.resolve(fileName);
+
+        // Save the file
+        Files.copy(file.getInputStream(), filePath);
+
+        // Return the relative path for saving in the database
+        return filePath.toString();
     }
     @GetMapping(value = "/{cropCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public CropStatus getSelectedCrop(@PathVariable ("cropCode") String cropCode){
@@ -63,14 +98,29 @@ public class CropApi {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping(value = "/{cropCode}")
-    public ResponseEntity<Void> updateCrop(@PathVariable ("cropCode") String cropCode,
-                                           @RequestBody CropDTO updatedCropDTO){
+    @PutMapping(value = "/{cropCode}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> updateCrop(
+            @PathVariable ("cropCode") String cropCode,
+            @RequestParam("cropCommonName") String commonName,
+            @RequestParam("cropScientificName") String scientificName,
+            @RequestParam(value = "cropImage", required = false) MultipartFile cropImage,
+            @RequestParam("category") String category,
+            @RequestParam("cropSeason") String season,
+            @RequestParam("fieldCode") String fieldCode) {
         //validations
         try {
-            if(!RegexProcess.cropCodeMatcher(cropCode) || updatedCropDTO == null){
+            if(!RegexProcess.cropCodeMatcher(cropCode)){
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
+            // Save the image if provided
+            String imagePath = null;
+            if (cropImage != null) {
+                imagePath = saveImage(cropImage);
+            }
+
+            // Create updated CropDTO
+            CropDTO updatedCropDTO = new CropDTO(cropCode, commonName, scientificName, imagePath, category, season, fieldCode);
+
             cropService.updateCrop(cropCode,updatedCropDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (CropNotFoundException e){

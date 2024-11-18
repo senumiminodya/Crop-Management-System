@@ -21,7 +21,7 @@ public class MonitoringLogEntity implements SuperEntity {
     private Date logDate;
     private String observation;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String observedImage;
 
     @ManyToMany

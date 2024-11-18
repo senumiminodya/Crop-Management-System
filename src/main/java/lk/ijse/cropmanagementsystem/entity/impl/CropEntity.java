@@ -17,7 +17,7 @@ public class CropEntity implements SuperEntity {
     private String commonName;
     private String scientificName;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String cropImage;
 
     private String category;

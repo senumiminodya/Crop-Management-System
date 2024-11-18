@@ -34,9 +34,9 @@ public class FieldEntity implements SuperEntity {
     )
     private List<StaffEntity> staff;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String fieldImage1;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "VARCHAR(255)")
     private String fieldImage2;
 }

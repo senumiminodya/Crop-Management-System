@@ -3,12 +3,15 @@ package lk.ijse.cropmanagementsystem.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lk.ijse.cropmanagementsystem.customStatusCode.SelectedClassesErrorStatus;
 import lk.ijse.cropmanagementsystem.dto.MonitoringLogStatus;
+import lk.ijse.cropmanagementsystem.dto.impl.CropDTO;
 import lk.ijse.cropmanagementsystem.dto.impl.MonitoringLogDTO;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.MonitoringLogNotFoundException;
 import lk.ijse.cropmanagementsystem.service.MonitoringLogService;
 import lk.ijse.cropmanagementsystem.util.RegexProcess;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +31,8 @@ import java.util.UUID;
 public class MonitoringLogApi {
     @Autowired
     private MonitoringLogService logService;
-    private final String uploadDir = "src/main/resources/uploads/";
+    @Value("${upload.dir:src/main/resources/uploads/}")
+    private String uploadDir;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,6 +63,13 @@ public class MonitoringLogApi {
     }
     // Save file to the server (example function)
     private String saveFile(MultipartFile file) throws IOException {
+        if (!file.getContentType().startsWith("image/")) {
+            throw new IllegalArgumentException("Only image files are allowed.");
+        }
+
+        if (file.getSize() > 2 * 1024 * 1024) { // 2 MB limit
+            throw new IllegalArgumentException("File size exceeds the maximum allowed size of 2 MB.");
+        }
         // Ensure the directory exists
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {
@@ -73,7 +84,27 @@ public class MonitoringLogApi {
         Files.copy(file.getInputStream(), filePath);
 
         // Return the relative path for saving in the database
-        return filePath.toString();
+        return fileName;
+    }
+    private void deleteImage(String fileName) throws IOException {
+        Path filePath = Paths.get(uploadDir).resolve(fileName);
+        if (Files.exists(filePath)) {
+            Files.delete(filePath);
+        }
+    }
+    @GetMapping(value = "/image/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<UrlResource> getImage(@PathVariable String fileName) {
+        try {
+            Path filePath = Paths.get(uploadDir).resolve(fileName);
+            UrlResource resource = new UrlResource(filePath.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @GetMapping(value = "/{logCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public MonitoringLogStatus getSelectedLog(@PathVariable ("logCode") String logCode){
@@ -118,6 +149,8 @@ public class MonitoringLogApi {
 
             // If logImage is provided, process it (e.g., save to file system or database)
             if (logImage != null && !logImage.isEmpty()) {
+                MonitoringLogDTO existingLog = (MonitoringLogDTO) logService.getLog(logCode);
+                deleteImage(existingLog.getObservedImage());
                 String imagePath = saveFile(logImage);
                 updatedLogDTO.setObservedImage(imagePath);
             }

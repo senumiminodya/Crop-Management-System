@@ -10,6 +10,8 @@ import lk.ijse.cropmanagementsystem.exception.FieldNotFoundException;
 import lk.ijse.cropmanagementsystem.service.FieldService;
 import lk.ijse.cropmanagementsystem.util.RegexProcess;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/fields")
@@ -29,7 +32,8 @@ public class FieldApi {
     @Autowired
     private FieldService fieldService;
     // Directory for saving images
-    private final String uploadDir = "src/main/resources/uploads/";
+    @Value("${upload.dir:src/main/resources/uploads/}")
+    private String uploadDir;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -54,9 +58,8 @@ public class FieldApi {
             fieldDTO.setFieldImage2(imagePath2);
             fieldService.saveField(fieldDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (DataPersistException e){
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -72,13 +75,48 @@ public class FieldApi {
         }
     }
     private String saveFile(MultipartFile file) throws IOException {
-        if (file != null && !file.isEmpty()) {
-            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-            Path filePath = Paths.get(uploadDir, fileName);
-            Files.write(filePath, file.getBytes());
-            return filePath.toString();
+        if (!file.getContentType().startsWith("image/")) {
+            throw new IllegalArgumentException("Only image files are allowed.");
         }
-        return null;
+
+        if (file.getSize() > 2 * 1024 * 1024) { // 2 MB limit
+            throw new IllegalArgumentException("File size exceeds the maximum allowed size of 2 MB.");
+        }
+        // Ensure the directory exists
+        Path uploadPath = Paths.get(uploadDir);
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        // Generate a unique file name
+        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+        Path filePath = uploadPath.resolve(fileName);
+
+        // Save the file
+        Files.copy(file.getInputStream(), filePath);
+
+        // Return the relative path for saving in the database
+        return fileName;
+    }
+    private void deleteImage(String fileName) throws IOException {
+        Path filePath = Paths.get(uploadDir).resolve(fileName);
+        if (Files.exists(filePath)) {
+            Files.delete(filePath);
+        }
+    }
+    @GetMapping(value = "/image/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<UrlResource> getImage(@PathVariable String fileName) {
+        try {
+            Path filePath = Paths.get(uploadDir).resolve(fileName);
+            UrlResource resource = new UrlResource(filePath.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @GetMapping(value = "/{fieldCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public FieldStatus getSelectedField(@PathVariable ("fieldCode") String fieldCode){
@@ -122,6 +160,9 @@ public class FieldApi {
             String imagePath1 = null;
             String imagePath2 = null;
             if (fieldImage1 != null || fieldImage2!= null) {
+                FieldDTO existingField = (FieldDTO) fieldService.getField(fieldCode);
+                deleteImage(existingField.getFieldImage1());
+                deleteImage(existingField.getFieldImage2());
                 imagePath1 = saveFile(fieldImage1);
                 imagePath2 = saveFile(fieldImage2);
             }
@@ -135,6 +176,8 @@ public class FieldApi {
 
             fieldService.updateField(fieldCode,updatedFieldDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (FieldNotFoundException e){
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

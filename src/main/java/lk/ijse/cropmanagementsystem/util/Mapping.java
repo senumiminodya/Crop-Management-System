@@ -16,6 +16,16 @@ public class Mapping {
     private ModelMapper modelMapper;
     @Autowired
     private StaffRepo staffRepo;
+    // for user mapping
+    public UserEntity toUserEntity(UserDTO userDTO) {
+        return modelMapper.map(userDTO, UserEntity.class);
+    }
+    public UserDTO toUserDTO(UserEntity userEntity) {
+        return modelMapper.map(userEntity, UserDTO.class);
+    }
+    public List<UserDTO> asUserDTOList(List<UserEntity> userEntities) {
+        return modelMapper.map(userEntities, new TypeToken<List<UserDTO>>(){}.getType());
+    }
     //for crop mapping
     public CropEntity toCropEntity(CropDTO cropDTO) {
         return modelMapper.map(cropDTO, CropEntity.class);

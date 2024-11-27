@@ -3,12 +3,10 @@ package lk.ijse.cropmanagementsystem.entity.impl;
 import jakarta.persistence.*;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "crop")
 public class CropEntity implements SuperEntity {
@@ -23,7 +21,63 @@ public class CropEntity implements SuperEntity {
     private String category;
     private String season;
 
-    @ManyToOne
-    @JoinColumn(name = "fieldCode")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "fieldCode", nullable = false)
     private FieldEntity field;
+
+    public String getCropCode() {
+        return cropCode;
+    }
+
+    public void setCropCode(String cropCode) {
+        this.cropCode = cropCode;
+    }
+
+    public String getCommonName() {
+        return commonName;
+    }
+
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
+    }
+
+    public String getScientificName() {
+        return scientificName;
+    }
+
+    public void setScientificName(String scientificName) {
+        this.scientificName = scientificName;
+    }
+
+    public String getCropImage() {
+        return cropImage;
+    }
+
+    public void setCropImage(String cropImage) {
+        this.cropImage = cropImage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public FieldEntity getField() {
+        return field;
+    }
+
+    public void setField(FieldEntity field) {
+        this.field = field;
+    }
 }

@@ -5,12 +5,10 @@ import jakarta.persistence.*;
 import lk.ijse.cropmanagementsystem.entity.StatusOfVehicle;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "vehicle")
 public class VehicleEntity implements SuperEntity {
@@ -23,11 +21,66 @@ public class VehicleEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private StatusOfVehicle status;
 
-    @ManyToOne
-    @JoinColumn(name = "staffId")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "staffId", nullable = true)
     @JsonBackReference
     private StaffEntity staff;
 
     private String remarks;
 
+    public String getVehicleCode() {
+        return vehicleCode;
+    }
+
+    public void setVehicleCode(String vehicleCode) {
+        this.vehicleCode = vehicleCode;
+    }
+
+    public String getLicensePlateNumber() {
+        return licensePlateNumber;
+    }
+
+    public void setLicensePlateNumber(String licensePlateNumber) {
+        this.licensePlateNumber = licensePlateNumber;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public StatusOfVehicle getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusOfVehicle status) {
+        this.status = status;
+    }
+
+    public StaffEntity getStaff() {
+        return staff;
+    }
+
+    public void setStaff(StaffEntity staff) {
+        this.staff = staff;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }

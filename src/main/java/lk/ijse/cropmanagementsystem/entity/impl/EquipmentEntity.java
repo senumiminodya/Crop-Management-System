@@ -5,12 +5,10 @@ import lk.ijse.cropmanagementsystem.entity.StatusOfEquipment;
 import lk.ijse.cropmanagementsystem.entity.EquipmentType;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "equipment")
 public class EquipmentEntity implements SuperEntity {
@@ -24,11 +22,59 @@ public class EquipmentEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private StatusOfEquipment status;
 
-    @ManyToOne
-    @JoinColumn(name = "staffId")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "staffId", nullable = true)
     private StaffEntity assignedStaff;
 
-    @ManyToOne
-    @JoinColumn(name = "fieldCode")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "fieldCode", nullable = true)
     private FieldEntity assignedField;
+
+    public String getEquipmentId() {
+        return equipmentId;
+    }
+
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public EquipmentType getType() {
+        return type;
+    }
+
+    public void setType(EquipmentType type) {
+        this.type = type;
+    }
+
+    public StatusOfEquipment getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusOfEquipment status) {
+        this.status = status;
+    }
+
+    public StaffEntity getAssignedStaff() {
+        return assignedStaff;
+    }
+
+    public void setAssignedStaff(StaffEntity assignedStaff) {
+        this.assignedStaff = assignedStaff;
+    }
+
+    public FieldEntity getAssignedField() {
+        return assignedField;
+    }
+
+    public void setAssignedField(FieldEntity assignedField) {
+        this.assignedField = assignedField;
+    }
 }

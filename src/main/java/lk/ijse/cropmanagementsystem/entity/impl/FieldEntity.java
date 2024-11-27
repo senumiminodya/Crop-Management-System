@@ -3,7 +3,6 @@ package lk.ijse.cropmanagementsystem.entity.impl;
 import jakarta.persistence.*;
 import lk.ijse.cropmanagementsystem.entity.SuperEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.geo.Point;
 
@@ -11,7 +10,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "field")
 public class FieldEntity implements SuperEntity {
@@ -23,10 +21,10 @@ public class FieldEntity implements SuperEntity {
 
     private double extentSize;
 
-    @OneToMany(mappedBy = "field")
+    @OneToMany(mappedBy = "field", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CropEntity> crops;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "field_staff",
             joinColumns = @JoinColumn(name = "fieldCode"),
@@ -39,4 +37,68 @@ public class FieldEntity implements SuperEntity {
 
     @Column(columnDefinition = "VARCHAR(255)")
     private String fieldImage2;
+
+    public String getFieldCode() {
+        return fieldCode;
+    }
+
+    public void setFieldCode(String fieldCode) {
+        this.fieldCode = fieldCode;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public double getExtentSize() {
+        return extentSize;
+    }
+
+    public void setExtentSize(double extentSize) {
+        this.extentSize = extentSize;
+    }
+
+    public List<CropEntity> getCrops() {
+        return crops;
+    }
+
+    public void setCrops(List<CropEntity> crops) {
+        this.crops = crops;
+    }
+
+    public List<StaffEntity> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<StaffEntity> staff) {
+        this.staff = staff;
+    }
+
+    public String getFieldImage1() {
+        return fieldImage1;
+    }
+
+    public void setFieldImage1(String fieldImage1) {
+        this.fieldImage1 = fieldImage1;
+    }
+
+    public String getFieldImage2() {
+        return fieldImage2;
+    }
+
+    public void setFieldImage2(String fieldImage2) {
+        this.fieldImage2 = fieldImage2;
+    }
 }

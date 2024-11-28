@@ -9,6 +9,7 @@ import lk.ijse.cropmanagementsystem.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,6 +52,11 @@ public class JWTConfigFilter extends OncePerRequestFilter {
                 emptyContext.setAuthentication(authToken);
                 SecurityContextHolder.setContext(emptyContext);
 
+            } else {
+                // Handle invalid token exception
+                response.setStatus(HttpStatus.FORBIDDEN.value());
+                response.getWriter().write("Invalid Token");
+                return;
             }
 
         }

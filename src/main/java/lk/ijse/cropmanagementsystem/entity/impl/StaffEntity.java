@@ -40,6 +40,9 @@ public class StaffEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne(mappedBy = "staff",cascade = CascadeType.ALL, orphanRemoval = true)
+    private UserEntity user;
+
     @ManyToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<FieldEntity> fields;
 

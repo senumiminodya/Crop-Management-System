@@ -25,13 +25,14 @@ public class StaffServiceImpl implements StaffService {
     @Autowired
     private Mapping staffMapping;
     @Override
-    public void saveStaff(StaffDTO staffDTO) {
+    public StaffDTO saveStaff(StaffDTO staffDTO) {
         staffDTO.setId(AppUtil.generateStaffId());
         StaffEntity savedStaff =
                 staffRepo.save(staffMapping.toStaffEntity(staffDTO));
         if(savedStaff == null){
             throw new DataPersistException("Staff not saved");
         }
+        return staffMapping.toStaffDto(savedStaff);
     }
 
     @Override
@@ -80,5 +81,12 @@ public class StaffServiceImpl implements StaffService {
             findStaff.get().setEmail(staffDTO.getEmail());
             findStaff.get().setRole(staffDTO.getRole());
         }
+    }
+
+    @Override
+    public Optional findByEmail(String email) {
+        Optional<StaffEntity> byEmail = staffRepo.findByEmail(email);
+
+        return byEmail.map(staffMapping::toStaffDto);
     }
 }

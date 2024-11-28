@@ -63,8 +63,6 @@ public class UserServiceIMPL implements UserService {
     public void updateUser(String userId, UserDTO userDTO) {
         Optional<UserEntity> tmpUser = userRepo.findById(userId);
         if(tmpUser.isPresent()) {
-            tmpUser.get().setFirstName(userDTO.getFirstName());
-            tmpUser.get().setLastName(userDTO.getLastName());
             tmpUser.get().setEmail(userDTO.getEmail());
             tmpUser.get().setPassword(userDTO.getPassword());
         }

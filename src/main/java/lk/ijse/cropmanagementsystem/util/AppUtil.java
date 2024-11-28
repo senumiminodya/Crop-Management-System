@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class AppUtil {
     public static String generateUserId() {
-        return "USER-"+ UUID.randomUUID();
+        return "USER-"+ UUID.randomUUID().toString().substring(0, 4);
     }
     public static String generateCropCode() {
         return "CROP-" + UUID.randomUUID().toString().substring(0, 4);

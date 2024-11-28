@@ -13,14 +13,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("api/v1/users")
-public class UserController {
+@CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+public class UserApi {
     @Autowired
     private UserService userService;
 
@@ -30,20 +30,17 @@ public class UserController {
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE )
     /* consume karanne client. produse karanne server. */
     public ResponseEntity<Void> saveUser(
-            @RequestPart("firstName") String firstName,
-            @RequestPart ("lastName") String lastName,
             @RequestPart ("email") String email,
             @RequestPart ("password") String password
 
     ){
+        System.out.println("comes to save user method in UserAPI");
         try {
             //generate id
             String userId = AppUtil.generateUserId();
             //build the object
             var buildUserDto = new UserDTO();
-            buildUserDto.setUserId(userId);
-            buildUserDto.setFirstName(firstName);
-            buildUserDto.setLastName(lastName);
+            buildUserDto.setId(userId);
             buildUserDto.setEmail(email);
             buildUserDto.setPassword(password);
             userService.saveUser(buildUserDto);
@@ -88,24 +85,21 @@ public class UserController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMINISTRATIVE')")
     public List<UserDTO> getAllUsers() {
+
         return userService.getAllUsers();
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping(value = "/{userId}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void updateUser(
-            @RequestPart ("firstName") String firstName,
-            @RequestPart ("lastName") String lastName,
             @RequestPart ("email") String email,
             @RequestPart ("password") String password,
             @PathVariable ("userId") String userId
     ) {
         //build the object
         var buildUserDto = new UserDTO();
-        buildUserDto.setFirstName(firstName);
-        buildUserDto.setLastName(lastName);
         buildUserDto.setEmail(email);
         buildUserDto.setPassword(password);
         userService.updateUser(userId, buildUserDto);

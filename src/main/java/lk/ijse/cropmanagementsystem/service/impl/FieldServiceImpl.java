@@ -33,34 +33,69 @@ public class FieldServiceImpl implements FieldService {
     public void saveField(FieldDTO fieldDTO) {
         fieldDTO.setFieldCode(AppUtil.generateFieldCode());
 
-        /*FieldEntity savedField =
-                fieldRepo.save(fieldMapping.toFieldEntity(fieldDTO));
-        if(savedField == null){
-            throw new DataPersistException("Field not saved");
-        }*/
         // Load existing staff entities (by ID) and set them to fieldEntity
-        FieldEntity fieldEntity = fieldMapping.toFieldEntity(fieldDTO);
+        /*FieldEntity fieldEntity = fieldMapping.toFieldEntity(fieldDTO);
         List<StaffEntity> staffEntities = fieldDTO.getStaff().stream()
                 .map(staffId -> staffRepo.getReferenceById(staffId)) // uses a proxy to avoid unsaved entities
                 .collect(Collectors.toList());
-        fieldEntity.setStaff(staffEntities);
+        fieldEntity.setStaff(staffEntities);*/
 
         // Save fieldEntity which now has managed StaffEntity references
+        /*fieldRepo.save(fieldEntity);*/
+        // Map DTO to Entity using modelMapper
+        FieldEntity fieldEntity = fieldMapping.toFieldEntity(fieldDTO);
+
+        // Map staff IDs to StaffEntity references (use JPA proxies)
+        List<StaffEntity> staffEntities = fieldDTO.getStaff().stream()
+                .map(staffId -> staffRepo.getReferenceById(staffId)) // Get proxy references
+                .collect(Collectors.toList());
+
+        // Set the staff entities to the field entity
+        fieldEntity.setStaff(staffEntities);
+
+        // Save the field entity
         fieldRepo.save(fieldEntity);
     }
 
     @Override
     public List<FieldDTO> getAllFields() {
-        return fieldMapping.asFieldDtoList( fieldRepo.findAll());
+
+        //return fieldMapping.asFieldDtoList( fieldRepo.findAll());
+        // Fetch all fields and map them to FieldDTO
+        return fieldRepo.findAll().stream()
+                .map(fieldEntity -> {
+                    FieldDTO fieldDTO = fieldMapping.toFieldDto(fieldEntity);
+                    // Replace staff entities with staff IDs
+                    fieldDTO.setStaff(
+                            fieldEntity.getStaff().stream()
+                                    .map(StaffEntity::getId) // Extract IDs from StaffEntity
+                                    .collect(Collectors.toList())
+                    );
+                    return fieldDTO;
+                })
+                .collect(Collectors.toList());
     }
 
     @Override
     public FieldStatus getField(String fieldCode) {
-        if(fieldRepo.existsById(fieldCode)){
+        /*if(fieldRepo.existsById(fieldCode)){
             var selectedField = fieldRepo.getReferenceById(fieldCode);
             return fieldMapping.toFieldDto(selectedField);
         }else {
             return new SelectedClassesErrorStatus(2,"Selected field not found");
+        }*/
+        if (fieldRepo.existsById(fieldCode)) {
+            var selectedField = fieldRepo.getReferenceById(fieldCode);
+            FieldDTO fieldDTO = fieldMapping.toFieldDto(selectedField);
+            // Replace staff entities with staff IDs
+            fieldDTO.setStaff(
+                    selectedField.getStaff().stream()
+                            .map(StaffEntity::getId) // Extract IDs from StaffEntity
+                            .collect(Collectors.toList())
+            );
+            return fieldDTO;
+        } else {
+            return new SelectedClassesErrorStatus(2, "Selected field not found");
         }
     }
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class Mapping {
@@ -55,7 +56,16 @@ public class Mapping {
         return modelMapper.map(fieldDTO, FieldEntity.class);
     }
     public FieldDTO toFieldDto(FieldEntity fieldEntity) {
-        return modelMapper.map(fieldEntity, FieldDTO.class);
+
+        //return modelMapper.map(fieldEntity, FieldDTO.class);
+        FieldDTO fieldDTO = modelMapper.map(fieldEntity, FieldDTO.class);
+        // Replace staff entities with staff IDs
+        fieldDTO.setStaff(
+                fieldEntity.getStaff().stream()
+                        .map(StaffEntity::getId) // Extract IDs from StaffEntity
+                        .collect(Collectors.toList())
+        );
+        return fieldDTO;
     }
     public List<FieldDTO> asFieldDtoList(List<FieldEntity> fieldEntities) {
         return modelMapper.map(fieldEntities, new TypeToken<List<FieldDTO>>() {}.getType());

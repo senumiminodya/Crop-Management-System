@@ -32,6 +32,7 @@ public class SecurityConfig {
                         req.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                 .requestMatchers("api/v1/auth/**")
                                 .permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/v1/*/image/**").permitAll() // Allow public access
                                 .anyRequest()
                                 .authenticated())
                 /* 'api/v1/auth/**' me url pattern eka thiyanawa nm permission denna. anith request authenticate karanna */

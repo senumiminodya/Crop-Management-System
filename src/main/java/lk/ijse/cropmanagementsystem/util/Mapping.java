@@ -2,12 +2,17 @@ package lk.ijse.cropmanagementsystem.util;
 
 import lk.ijse.cropmanagementsystem.dto.impl.*;
 import lk.ijse.cropmanagementsystem.entity.impl.*;
+import lk.ijse.cropmanagementsystem.exception.DataPersistException;
+import lk.ijse.cropmanagementsystem.repository.CropRepo;
+import lk.ijse.cropmanagementsystem.repository.FieldRepo;
 import lk.ijse.cropmanagementsystem.repository.StaffRepo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +22,10 @@ public class Mapping {
     private ModelMapper modelMapper;
     @Autowired
     private StaffRepo staffRepo;
+    @Autowired
+    private FieldRepo fieldRepo;
+    @Autowired
+    private CropRepo cropRepo;
     // for user mapping
     public UserEntity toUserEntity(UserDTO userDTO) {
         return modelMapper.map(userDTO, UserEntity.class);
@@ -72,10 +81,50 @@ public class Mapping {
     }
     //for monitoringLog mapping
     public MonitoringLogEntity toMonitoringLogEntity(MonitoringLogDTO monitoringLogDTO) {
-        return modelMapper.map(monitoringLogDTO, MonitoringLogEntity.class);
+        //return modelMapper.map(monitoringLogDTO, MonitoringLogEntity.class);
+        MonitoringLogEntity entity = new MonitoringLogEntity();
+        entity.setLogCode(monitoringLogDTO.getLogCode());
+        entity.setLogDate(monitoringLogDTO.getLogDate());
+        entity.setObservation(monitoringLogDTO.getObservation());
+        entity.setObservedImage(monitoringLogDTO.getObservedImage());
+
+        List<FieldEntity> fieldEntities = monitoringLogDTO.getFields().stream()
+                .map(field -> fieldRepo.findById(field)
+                        .orElseThrow(() -> new DataPersistException("Field not found")))
+                .collect(Collectors.toList());
+        entity.setFields(fieldEntities);
+
+        List<CropEntity> cropEntities = monitoringLogDTO.getCrops().stream()
+                .map(crop -> cropRepo.findById(crop)
+                        .orElseThrow(() -> new DataPersistException("Crop not found")))
+                .collect(Collectors.toList());
+        entity.setCrops(cropEntities);
+
+        List<StaffEntity> staffEntities = monitoringLogDTO.getStaff().stream()
+                .map(staff -> staffRepo.findById(staff)
+                        .orElseThrow(() -> new DataPersistException("Staff not found")))
+                .collect(Collectors.toList());
+        entity.setStaff(staffEntities);
+
+        return entity;
     }
     public MonitoringLogDTO toMonitoringLogDto(MonitoringLogEntity monitoringLogEntity) {
-        return modelMapper.map(monitoringLogEntity, MonitoringLogDTO.class);
+        //return modelMapper.map(monitoringLogEntity, MonitoringLogDTO.class);
+        MonitoringLogDTO dto = new MonitoringLogDTO();
+        dto.setLogCode(monitoringLogEntity.getLogCode());
+        dto.setLogDate(monitoringLogEntity.getLogDate());
+        dto.setObservation(monitoringLogEntity.getObservation());
+        dto.setObservedImage(monitoringLogEntity.getObservedImage());
+        dto.setFields(monitoringLogEntity.getFields().stream()
+                .map(FieldEntity::getFieldCode)
+                .toList());
+        dto.setCrops(monitoringLogEntity.getCrops().stream()
+                .map(CropEntity::getCropCode)
+                .toList());
+        dto.setStaff(monitoringLogEntity.getStaff().stream()
+                .map(StaffEntity::getId)
+                .toList());
+        return dto;
     }
     public List<MonitoringLogDTO> asMonitoringLogDtoList(List<MonitoringLogEntity> monitoringLogEntities) {
         return modelMapper.map(monitoringLogEntities, new TypeToken<List<MonitoringLogDTO>>() {}.getType());

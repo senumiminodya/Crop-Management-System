@@ -1,5 +1,7 @@
 package lk.ijse.cropmanagementsystem.dto.impl;
 
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lk.ijse.cropmanagementsystem.dto.MonitoringLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,11 +18,11 @@ public class MonitoringLogDTO implements MonitoringLogStatus {
     private Date logDate;
     private String observation;
     private String observedImage;
-    private List<FieldDTO> fields;
-    private List<CropDTO> crops;
-    private List<StaffDTO> staff;
+    private List<String> fields;
+    private List<String> crops;
+    private List<String> staff;
 
-    public MonitoringLogDTO(Date logDate, String observation, String observedImage, List<FieldDTO> fields, List<CropDTO> crops, List<StaffDTO> staff) {
+    public MonitoringLogDTO(Date logDate, String observation, String observedImage, List<String> fields, List<String> crops, List<String> staff) {
         this.logDate = logDate;
         this.observation = observation;
         this.observedImage = observedImage;

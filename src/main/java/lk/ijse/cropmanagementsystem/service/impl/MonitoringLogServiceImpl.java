@@ -42,37 +42,54 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
     private Mapping logMapping;
     @Override
     public void saveLog(MonitoringLogDTO monitoringLogDTO) {
-        monitoringLogDTO.setLogCode(AppUtil.generateLogCode());
+        /*monitoringLogDTO.setLogCode(AppUtil.generateLogCode());
         MonitoringLogEntity savedLog =
                 logRepo.save(logMapping.toMonitoringLogEntity(monitoringLogDTO));
         if(savedLog == null){
+            throw new DataPersistException("Log not saved");
+        }*/
+        monitoringLogDTO.setLogCode(AppUtil.generateLogCode());
+        MonitoringLogEntity entity = logMapping.toMonitoringLogEntity(monitoringLogDTO);
+        MonitoringLogEntity savedLog = logRepo.save(entity);
+
+        if (savedLog == null) {
             throw new DataPersistException("Log not saved");
         }
     }
 
     @Override
     public List<MonitoringLogDTO> getAllLogs() {
-        return logMapping.asMonitoringLogDtoList( logRepo.findAll());
+
+        //return logMapping.asMonitoringLogDtoList( logRepo.findAll());
+        return logRepo.findAll().stream()
+                .map(logMapping::toMonitoringLogDto)
+                .toList();
     }
 
     @Override
     public MonitoringLogStatus getLog(String logCode) {
-        if(logRepo.existsById(logCode)){
+        /*if(logRepo.existsById(logCode)){
             var selectedLog = logRepo.getReferenceById(logCode);
             return logMapping.toMonitoringLogDto(selectedLog);
         }else {
             return new SelectedClassesErrorStatus(2,"Selected log not found");
-        }
+        }*/
+        return logRepo.findById(logCode)
+                .map(logMapping::toMonitoringLogDto)
+                .orElseThrow(() -> new MonitoringLogNotFoundException("Selected log not found"));
     }
 
     @Override
     public void deleteLog(String logCode) {
-        Optional<MonitoringLogEntity> foundLog = logRepo.findById(logCode);
+        /*Optional<MonitoringLogEntity> foundLog = logRepo.findById(logCode);
         if (!foundLog.isPresent()) {
             throw new MonitoringLogNotFoundException("Log not found");
         }else {
             logRepo.deleteById(logCode);
-        }
+        }*/
+        MonitoringLogEntity foundLog = logRepo.findById(logCode)
+                .orElseThrow(() -> new MonitoringLogNotFoundException("Log not found"));
+        logRepo.delete(foundLog);
     }
 
     @Override
@@ -85,22 +102,22 @@ public class MonitoringLogServiceImpl implements MonitoringLogService {
             findLog.get().setObservation(monitoringLogDTO.getObservation());
             findLog.get().setObservedImage(monitoringLogDTO.getObservedImage());
             List<FieldEntity> fieldEntities = new ArrayList<>();
-            for (FieldDTO field : monitoringLogDTO.getFields()) {
-                FieldEntity fieldEntity = fieldRepo.findById(field.getFieldCode())
+            for (String field : monitoringLogDTO.getFields()) {
+                FieldEntity fieldEntity = fieldRepo.findById(field)
                         .orElseThrow(() -> new DataPersistException("Field not found"));
                 fieldEntities.add(fieldEntity);
             }
             findLog.get().setFields(fieldEntities);
             List<CropEntity> cropEntities = new ArrayList<>();
-            for (CropDTO crop : monitoringLogDTO.getCrops()) {
-                CropEntity cropEntity = cropRepo.findById(crop.getCropCode())
+            for (String crop : monitoringLogDTO.getCrops()) {
+                CropEntity cropEntity = cropRepo.findById(crop)
                         .orElseThrow(() -> new DataPersistException("Crop not found"));
                 cropEntities.add(cropEntity);
             }
             findLog.get().setCrops(cropEntities);
             List<StaffEntity> staffEntities = new ArrayList<>();
-            for (StaffDTO staff: monitoringLogDTO.getStaff()) {
-                StaffEntity staffEntity = staffRepo.findById(staff.getId())
+            for (String staff: monitoringLogDTO.getStaff()) {
+                StaffEntity staffEntity = staffRepo.findById(staff)
                         .orElseThrow(() -> new DataPersistException("Staff not found"));
                 staffEntities.add(staffEntity);
             }

@@ -1,0 +1,1779 @@
+2024-12-04T21:27:53.518+05:30  INFO 11232 --- [cropManagementSystem] [main] l.i.c.CropManagementSystemApplication    : Starting CropManagementSystemApplication using Java 21.0.4 with PID 11232 (C:\Users\DELL\OneDrive\Documents\GDSE67\AAD\Crop Management System\cropManagementSystem\build\classes\java\main started by DELL in C:\Users\DELL\OneDrive\Documents\GDSE67\AAD\Crop Management System\cropManagementSystem)
+2024-12-04T21:27:53.522+05:30 DEBUG 11232 --- [cropManagementSystem] [main] l.i.c.CropManagementSystemApplication    : Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-04T21:27:53.524+05:30  INFO 11232 --- [cropManagementSystem] [main] l.i.c.CropManagementSystemApplication    : The following 1 profile is active: "dev"
+2024-12-04T21:27:55.400+05:30  INFO 11232 --- [cropManagementSystem] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-04T21:27:55.637+05:30  INFO 11232 --- [cropManagementSystem] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 218 ms. Found 7 JPA repository interfaces.
+2024-12-04T21:27:57.056+05:30  INFO 11232 --- [cropManagementSystem] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 5050 (http)
+2024-12-04T21:27:57.099+05:30  INFO 11232 --- [cropManagementSystem] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-04T21:27:57.101+05:30  INFO 11232 --- [cropManagementSystem] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-04T21:27:57.299+05:30  INFO 11232 --- [cropManagementSystem] [main] o.a.c.c.C.[.[.[/cropManagementSystem]    : Initializing Spring embedded WebApplicationContext
+2024-12-04T21:27:57.299+05:30  INFO 11232 --- [cropManagementSystem] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3641 ms
+2024-12-04T21:27:57.742+05:30  INFO 11232 --- [cropManagementSystem] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-04T21:27:57.941+05:30  INFO 11232 --- [cropManagementSystem] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-04T21:27:58.048+05:30  INFO 11232 --- [cropManagementSystem] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-04T21:27:58.863+05:30  INFO 11232 --- [cropManagementSystem] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-04T21:27:58.940+05:30  INFO 11232 --- [cropManagementSystem] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-04T21:27:59.783+05:30  INFO 11232 --- [cropManagementSystem] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7b3c0ecb
+2024-12-04T21:27:59.787+05:30  INFO 11232 --- [cropManagementSystem] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-04T21:27:59.912+05:30  WARN 11232 --- [cropManagementSystem] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-04T21:27:59.915+05:30  WARN 11232 --- [cropManagementSystem] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-12-04T21:28:03.054+05:30  INFO 11232 --- [cropManagementSystem] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-04T21:28:03.557+05:30  INFO 11232 --- [cropManagementSystem] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-04T21:28:04.673+05:30 DEBUG 11232 --- [cropManagementSystem] [main] l.i.c.c.JWTConfigFilter$$SpringCGLIB$$0  : Filter 'JWTConfigFilter' configured for use
+2024-12-04T21:28:04.866+05:30  INFO 11232 --- [cropManagementSystem] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-12-04T21:28:05.123+05:30  WARN 11232 --- [cropManagementSystem] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-04T21:28:05.816+05:30 DEBUG 11232 --- [cropManagementSystem] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JWTConfigFilter$$SpringCGLIB$$0, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-12-04T21:28:06.702+05:30  INFO 11232 --- [cropManagementSystem] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 5050 (http) with context path '/cropManagementSystem'
+2024-12-04T21:28:06.718+05:30  INFO 11232 --- [cropManagementSystem] [main] l.i.c.CropManagementSystemApplication    : Started CropManagementSystemApplication in 14.305 seconds (process running for 15.717)
+2024-12-04T21:28:29.219+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.a.c.c.C.[.[.[/cropManagementSystem]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-04T21:28:29.219+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-04T21:28:29.222+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-12-04T21:28:29.283+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/auth/signin
+2024-12-04T21:28:29.320+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:29.324+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/auth/signin
+2024-12-04T21:28:29.385+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/auth/signin
+2024-12-04T21:28:29.386+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:29.387+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/auth/signin
+2024-12-04T21:28:30.316+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:28:30.620+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2024-12-04T21:28:30.625+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:28:39.491+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/crops
+2024-12-04T21:28:39.492+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:39.493+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/crops
+2024-12-04T21:28:39.507+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:28:39.740+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:28:39.747+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:28:39.771+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:28:39.793+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:28:39.976+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:28:39.977+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:39.978+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:28:39.981+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:28:39.982+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:39.981+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:28:39.983+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:28:39.985+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:39.989+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:28:49.796+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/crops/CROP-8d72
+2024-12-04T21:28:49.797+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:49.799+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/crops/CROP-8d72
+2024-12-04T21:28:49.819+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/CROP-8d72
+2024-12-04T21:28:49.829+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:28:49.835+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/CROP-8d72
+2024-12-04T21:28:50.538+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:28:50.559+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:28:50.581+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:28:50.582+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:50.583+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:28:50.597+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:28:50.598+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:28:50.599+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/1d61c574-28c7-4dfa-ae02-7678732e6182_plant.jpg
+2024-12-04T21:29:01.992+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:29:02.004+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:29:02.013+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:29:02.107+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:29:02.150+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    update
+        crop 
+    set
+        category=?,
+        common_name=?,
+        crop_image=?,
+        field_code=?,
+        scientific_name=?,
+        season=? 
+    where
+        crop_code=?
+2024-12-04T21:29:02.185+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] l.ijse.cropmanagementsystem.api.CropApi  : Crop updated successfully: CropDTO(cropCode=CROP-8d72, cropCommonName=Coconut, cropScientificName=cocos Nucifera, cropImage=null, category=Tree, cropSeason=Summer, fieldCode=FIELD-4b11)
+2024-12-04T21:29:04.556+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:29:04.574+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:29:04.588+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:29:04.605+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:29:04.612+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:29:04.652+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:29:04.652+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:29:04.652+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:04.652+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:04.653+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:29:04.653+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:29:04.653+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/null
+2024-12-04T21:29:04.654+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:04.654+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/null
+2024-12-04T21:29:13.224+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:29:13.243+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:29:13.257+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:29:13.272+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:29:13.277+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:29:13.321+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:29:13.321+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:29:13.322+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:13.322+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:13.322+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:29:13.322+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:29:13.323+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/null
+2024-12-04T21:29:13.324+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:29:13.326+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/null
+2024-12-04T21:29:15.214+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/CROP-8d72
+2024-12-04T21:29:15.225+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:29:15.232+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/CROP-8d72
+2024-12-04T21:29:15.246+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:29:15.250+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:29:31.397+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:29:31.407+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:29:31.413+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:29:31.442+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:29:31.445+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:29:31.451+05:30 ERROR 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] l.ijse.cropmanagementsystem.api.CropApi  : Unexpected error occurred while updating crop: CROP-8d72
+
+java.lang.NullPointerException: null
+	at java.base/java.util.Objects.requireNonNull(Objects.java:233) ~[na:na]
+	at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:215) ~[na:na]
+	at java.base/java.nio.file.Path.resolve(Path.java:516) ~[na:na]
+	at lk.ijse.cropmanagementsystem.api.CropApi.deleteImage(CropApi.java:92) ~[main/:na]
+	at lk.ijse.cropmanagementsystem.api.CropApi.updateCrop(CropApi.java:157) ~[main/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at lk.ijse.cropmanagementsystem.config.JWTConfigFilter.doFilterInternal(JWTConfigFilter.java:63) ~[main/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-12-04T21:30:15.964+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:30:15.974+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:30:15.983+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured PUT /api/v1/crops/CROP-8d72
+2024-12-04T21:30:16.041+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:30:16.047+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:30:16.071+05:30 ERROR 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] l.ijse.cropmanagementsystem.api.CropApi  : Unexpected error occurred while updating crop: CROP-8d72
+
+java.lang.NullPointerException: null
+	at java.base/java.util.Objects.requireNonNull(Objects.java:233) ~[na:na]
+	at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:215) ~[na:na]
+	at java.base/java.nio.file.Path.resolve(Path.java:516) ~[na:na]
+	at lk.ijse.cropmanagementsystem.api.CropApi.deleteImage(CropApi.java:92) ~[main/:na]
+	at lk.ijse.cropmanagementsystem.api.CropApi.updateCrop(CropApi.java:157) ~[main/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at lk.ijse.cropmanagementsystem.config.JWTConfigFilter.doFilterInternal(JWTConfigFilter.java:63) ~[main/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.4.jar:6.3.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-12-04T21:30:47.856+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:30:47.866+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:30:47.873+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:30:47.879+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:30:47.882+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:30:47.931+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:30:47.932+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:47.933+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:30:47.931+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:30:47.933+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/null
+2024-12-04T21:30:47.933+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:47.934+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/null
+2024-12-04T21:30:47.935+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:47.941+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:30:49.568+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/CROP-8d72
+2024-12-04T21:30:49.576+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:30:49.582+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/CROP-8d72
+2024-12-04T21:30:49.587+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:30:49.591+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:30:56.143+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/crops/CROP-8d72
+2024-12-04T21:30:56.143+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:56.143+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/crops/CROP-8d72
+2024-12-04T21:30:56.148+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing DELETE /api/v1/crops/CROP-8d72
+2024-12-04T21:30:56.157+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:30:56.162+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured DELETE /api/v1/crops/CROP-8d72
+2024-12-04T21:30:56.167+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:30:56.189+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    delete 
+    from
+        crop 
+    where
+        crop_code=?
+2024-12-04T21:30:58.713+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:30:58.725+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:30:58.732+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:30:58.740+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:30:58.742+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:30:58.761+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:30:58.761+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:30:58.762+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:58.762+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:30:58.762+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:30:58.762+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:31:04.162+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:31:04.177+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:31:04.188+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:31:04.195+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:31:04.201+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:31:04.291+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:31:04.291+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:31:04.292+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:31:04.292+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:31:04.292+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:31:04.292+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:04.089+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/fields
+2024-12-04T21:32:04.091+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:04.092+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/fields
+2024-12-04T21:32:04.105+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/fields
+2024-12-04T21:32:04.126+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:04.140+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/fields
+2024-12-04T21:32:04.150+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0
+2024-12-04T21:32:04.207+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.252+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.263+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.273+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.281+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.290+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.297+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.306+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:04.315+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role 
+    from
+        field_staff s1_0 
+    join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    left join
+        user u1_0 
+            on s1_1.id=u1_0.staff_id 
+    where
+        s1_0.field_code=?
+2024-12-04T21:32:16.711+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/crops
+2024-12-04T21:32:16.720+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:16.727+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/crops
+2024-12-04T21:32:16.840+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        s1_0.field_code,
+        s1_1.id,
+        s1_1.address_line1,
+        s1_1.address_line2,
+        s1_1.address_line3,
+        s1_1.address_line4,
+        s1_1.address_line5,
+        s1_1.contact_no,
+        s1_1.designation,
+        s1_1.dob,
+        s1_1.email,
+        s1_1.first_name,
+        s1_1.gender,
+        s1_1.joined_date,
+        s1_1.last_name,
+        s1_1.role,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    left join
+        field_staff s1_0 
+            on f1_0.field_code=s1_0.field_code 
+    left join
+        staff s1_1 
+            on s1_1.id=s1_0.id 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:32:16.844+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:16.862+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        crop
+        (category, common_name, crop_image, field_code, scientific_name, season, crop_code) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+2024-12-04T21:32:16.887+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] l.ijse.cropmanagementsystem.api.CropApi  : Crop saved successfully: CropDTO(cropCode=CROP-16ea, cropCommonName=Coconut, cropScientificName=Cocos nucifera, cropImage=54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg, category=tree, cropSeason=summer, fieldCode=FIELD-82d6)
+2024-12-04T21:32:18.664+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:32:18.678+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:18.687+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:32:18.694+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:32:18.697+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:18.703+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:18.725+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:18.725+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:18.726+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:18.726+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:18.726+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:18.726+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:18.726+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:18.727+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:18.727+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:24.190+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:32:24.205+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:24.218+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:32:24.228+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:32:24.234+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:24.243+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:24.308+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:24.309+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:31.412+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/crops/CROP-16ea
+2024-12-04T21:32:31.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:31.415+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured OPTIONS /api/v1/crops/CROP-16ea
+2024-12-04T21:32:31.426+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/CROP-16ea
+2024-12-04T21:32:31.433+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:31.437+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/CROP-16ea
+2024-12-04T21:32:31.439+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:32:31.442+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:32:31.454+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:31.454+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:31.454+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:31.462+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:31.463+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:31.463+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/54b985d8-1c9e-4623-97c6-3aecec1fbae4_plant.jpg
+2024-12-04T21:32:54.460+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing PUT /api/v1/crops/CROP-16ea
+2024-12-04T21:32:54.475+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:54.485+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured PUT /api/v1/crops/CROP-16ea
+2024-12-04T21:32:54.542+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:32:54.549+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:32:54.596+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] l.ijse.cropmanagementsystem.api.CropApi  : Updated image saved at path: ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:32:54.604+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] org.hibernate.SQL                        : 
+    update
+        crop 
+    set
+        category=?,
+        common_name=?,
+        crop_image=?,
+        field_code=?,
+        scientific_name=?,
+        season=? 
+    where
+        crop_code=?
+2024-12-04T21:32:54.628+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] l.ijse.cropmanagementsystem.api.CropApi  : Crop updated successfully: CropDTO(cropCode=CROP-16ea, cropCommonName=Coconut, cropScientificName=Cocos nucifera, cropImage=ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg, category=tree, cropSeason=winter, fieldCode=FIELD-82d6)
+2024-12-04T21:32:56.555+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:32:56.565+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:56.570+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:32:56.579+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:32:56.582+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:56.587+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-7] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:32:56.615+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:59.348+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:32:59.356+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:32:59.361+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:32:59.365+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:32:59.368+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:59.372+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:32:59.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:32:59.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:59.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:32:59.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:32:59.414+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:59.415+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:59.415+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:32:59.415+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:32:59.415+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:33:03.484+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/CROP-16ea
+2024-12-04T21:33:03.494+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:33:03.499+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/CROP-16ea
+2024-12-04T21:33:03.502+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:33:03.506+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:33:03.520+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:33:03.521+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:03.521+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:33:03.531+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:33:03.532+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:03.532+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/ac7ae247-8e3a-4c28-903b-c3d174d3d418_plant.jpg
+2024-12-04T21:33:21.031+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Securing PUT /api/v1/crops/CROP-16ea
+2024-12-04T21:33:21.043+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:33:21.046+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] o.s.security.web.FilterChainProxy        : Secured PUT /api/v1/crops/CROP-16ea
+2024-12-04T21:33:21.071+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        crop ce1_0 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:33:21.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        f1_0.field_code,
+        f1_0.extent_size,
+        f1_0.field_image1,
+        f1_0.field_image2,
+        f1_0.field_name,
+        f1_0.location,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0 
+    join
+        field f1_0 
+            on f1_0.field_code=ce1_0.field_code 
+    where
+        ce1_0.crop_code=?
+2024-12-04T21:33:21.090+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] l.ijse.cropmanagementsystem.api.CropApi  : Updated image saved at path: a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg
+2024-12-04T21:33:21.093+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] org.hibernate.SQL                        : 
+    update
+        crop 
+    set
+        category=?,
+        common_name=?,
+        crop_image=?,
+        field_code=?,
+        scientific_name=?,
+        season=? 
+    where
+        crop_code=?
+2024-12-04T21:33:21.103+05:30  INFO 11232 --- [cropManagementSystem] [http-nio-5050-exec-1] l.ijse.cropmanagementsystem.api.CropApi  : Crop updated successfully: CropDTO(cropCode=CROP-16ea, cropCommonName=Coconut, cropScientificName=Cocos nucifera, cropImage=a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg, category=tree, cropSeason=Summer, fieldCode=FIELD-82d6)
+2024-12-04T21:33:23.117+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:33:23.126+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:33:23.134+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:33:23.142+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:33:23.145+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:33:23.147+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-5] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:33:23.164+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:33:23.164+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:33:23.164+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:23.164+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:23.165+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:33:23.165+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:33:23.166+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg
+2024-12-04T21:33:23.168+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:23.168+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg
+2024-12-04T21:33:26.039+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops
+2024-12-04T21:33:26.045+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ue1_0.user_id,
+        ue1_0.email,
+        ue1_0.password,
+        ue1_0.role,
+        ue1_0.staff_id 
+    from
+        user ue1_0 
+    where
+        ue1_0.email=?
+2024-12-04T21:33:26.050+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops
+2024-12-04T21:33:26.054+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        ce1_0.crop_code,
+        ce1_0.category,
+        ce1_0.common_name,
+        ce1_0.crop_image,
+        ce1_0.field_code,
+        ce1_0.scientific_name,
+        ce1_0.season 
+    from
+        crop ce1_0
+2024-12-04T21:33:26.057+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:33:26.060+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-9] org.hibernate.SQL                        : 
+    select
+        fe1_0.field_code,
+        fe1_0.extent_size,
+        fe1_0.field_image1,
+        fe1_0.field_image2,
+        fe1_0.field_name,
+        fe1_0.location 
+    from
+        field fe1_0 
+    where
+        fe1_0.field_code=?
+2024-12-04T21:33:26.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg
+2024-12-04T21:33:26.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:33:26.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:26.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/crops/image/a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg
+2024-12-04T21:33:26.074+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/d5db7016-01b8-430b-8a5b-930e16fd51f4_plant.jpg
+2024-12-04T21:33:26.075+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:26.076+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2024-12-04T21:33:26.076+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/a026f04d-f0c8-46a9-b163-ab6992b0048a_plant.jpg
+2024-12-04T21:33:26.076+05:30 DEBUG 11232 --- [cropManagementSystem] [http-nio-5050-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/crops/image/0f35509d-37c8-46a1-acf4-ad1ee195116e_plant.jpg

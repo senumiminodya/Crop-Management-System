@@ -7,6 +7,8 @@ import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.UserNotFoundException;
 import lk.ijse.cropmanagementsystem.service.UserService;
 import lk.ijse.cropmanagementsystem.util.AppUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +23,7 @@ import java.util.regex.Pattern;
 @RequestMapping("api/v1/users")
 @CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UserApi {
+    private static final Logger logger = LoggerFactory.getLogger(UserApi.class);
     @Autowired
     private UserService userService;
 
@@ -44,10 +47,13 @@ public class UserApi {
             buildUserDto.setEmail(email);
             buildUserDto.setPassword(password);
             userService.saveUser(buildUserDto);
+            logger.info("User with ID: {} successfully created", userId);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (DataPersistException e) {
+            logger.error("Error persisting user: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e) {
+            logger.error("Unexpected error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -59,6 +65,7 @@ public class UserApi {
         Pattern regexPattern = Pattern.compile(regexForUserID);
         var regexMatcher = regexPattern.matcher(userId);
         if (!regexMatcher.matches()) {
+            logger.warn("Invalid user ID format: {}", userId);
             return new SelectedClassesErrorStatus(1,"User ID is not valid");
         }
         return userService.getUser(userId);
@@ -71,15 +78,17 @@ public class UserApi {
         var regexMatcher = regexPattern.matcher(userId);
         try {
             if (!regexMatcher.matches()) {
+                logger.warn("Invalid user ID format for deletion: {}", userId);
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             userService.deleteUser(userId);
+            logger.info("User with ID: {} successfully deleted", userId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (UserNotFoundException e) {
-            e.printStackTrace();
+            logger.error("User not found: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Unexpected error during deletion: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -87,7 +96,7 @@ public class UserApi {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     //@PreAuthorize("hasRole('ADMINISTRATIVE')")
     public List<UserDTO> getAllUsers() {
-
+        logger.info("Retrieving all users");
         return userService.getAllUsers();
     }
 
@@ -103,5 +112,6 @@ public class UserApi {
         buildUserDto.setEmail(email);
         buildUserDto.setPassword(password);
         userService.updateUser(userId, buildUserDto);
+        logger.info("User with ID: {} successfully updated", userId);
     }
 }

@@ -7,6 +7,8 @@ import lk.ijse.cropmanagementsystem.exception.CropNotFoundException;
 import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.service.CropService;
 import lk.ijse.cropmanagementsystem.util.RegexProcess;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
@@ -27,6 +29,7 @@ import java.util.UUID;
 @RequestMapping("api/v1/crops")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CropApi {
+    private static final Logger logger = LoggerFactory.getLogger(CropApi.class);
     @Autowired
     private CropService cropService;
     // Directory for saving images
@@ -48,14 +51,16 @@ public class CropApi {
             // Create CropDTO
             CropDTO cropDTO = new CropDTO(commonName, scientificName, imagePath, category, season, fieldCode);
             cropService.saveCrop(cropDTO);
+            logger.info("Crop saved successfully: {}", cropDTO);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (IllegalArgumentException e) {
+            logger.error("Unsupported media type for crop image", e);
             return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (DataPersistException e){
-            e.printStackTrace();
+            logger.error("Error persisting crop data", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("Unexpected error occurred while saving crop", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -142,6 +147,7 @@ public class CropApi {
         //validations
         try {
             if(!RegexProcess.cropCodeMatcher(cropCode)){
+                logger.warn("Invalid crop code: {}", cropCode);
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             // Save the image if provided
@@ -150,20 +156,23 @@ public class CropApi {
                 CropDTO existingCrop = (CropDTO) cropService.getCrop(cropCode);
                 deleteImage(existingCrop.getCropImage()); // Delete the old image
                 imagePath = saveImage(cropImage);
+                logger.debug("Updated image saved at path: {}", imagePath);
             }
 
             // Create updated CropDTO
             CropDTO updatedCropDTO = new CropDTO(cropCode, commonName, scientificName, imagePath, category, season, fieldCode);
 
             cropService.updateCrop(cropCode,updatedCropDTO);
+            logger.info("Crop updated successfully: {}", updatedCropDTO);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (IllegalArgumentException e) {
+            logger.error("Unsupported media type for crop image", e);
             return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (CropNotFoundException e){
-            e.printStackTrace();
+            logger.error("Crop not found: {}", cropCode, e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("Unexpected error occurred while updating crop: {}", cropCode, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

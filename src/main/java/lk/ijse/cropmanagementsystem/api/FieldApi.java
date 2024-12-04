@@ -9,6 +9,8 @@ import lk.ijse.cropmanagementsystem.exception.DataPersistException;
 import lk.ijse.cropmanagementsystem.exception.FieldNotFoundException;
 import lk.ijse.cropmanagementsystem.service.FieldService;
 import lk.ijse.cropmanagementsystem.util.RegexProcess;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
@@ -29,6 +31,8 @@ import java.util.UUID;
 @RequestMapping("api/v1/fields")
 @CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class FieldApi {
+    private static final Logger logger = LoggerFactory.getLogger(FieldApi.class);
+
     @Autowired
     private FieldService fieldService;
     // Directory for saving images
@@ -57,14 +61,16 @@ public class FieldApi {
             fieldDTO.setFieldImage1(imagePath1);
             fieldDTO.setFieldImage2(imagePath2);
             fieldService.saveField(fieldDTO);
+            logger.info("Field saved successfully with code: {}", fieldDTO.getFieldCode());
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (IllegalArgumentException e) {
+            logger.warn("Unsupported media type error: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (DataPersistException e){
-            e.printStackTrace();
+            logger.error("Error persisting field data: {}", e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("Internal server error occurred: ", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -121,6 +127,7 @@ public class FieldApi {
     @GetMapping(value = "/{fieldCode}",produces = MediaType.APPLICATION_JSON_VALUE)
     public FieldStatus getSelectedField(@PathVariable ("fieldCode") String fieldCode){
         if (!RegexProcess.fieldCodeMatcher(fieldCode)) {
+            logger.warn("Invalid field code format: {}", fieldCode);
             return new SelectedClassesErrorStatus(1,"Field Code is not valid");
         }
         return fieldService.getField(fieldCode);
@@ -133,15 +140,17 @@ public class FieldApi {
     public ResponseEntity<Void> deleteField(@PathVariable ("fieldCode") String fieldCode){
         try {
             if (!RegexProcess.fieldCodeMatcher(fieldCode)) {
+                logger.warn("Invalid field code: {}", fieldCode);
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             fieldService.deleteField(fieldCode);
+            logger.info("Field deleted successfully.");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (FieldNotFoundException e){
-            e.printStackTrace();
+            logger.error("Field not found: {}", e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("Unexpected error occurred while deleting field: {}", e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -175,14 +184,16 @@ public class FieldApi {
             updatedFieldDTO.setFieldImage2(imagePath2);
 
             fieldService.updateField(fieldCode,updatedFieldDTO);
+            logger.info("Field updated successfully.");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }catch (IllegalArgumentException e) {
+            logger.error("Unsupported media type for field image", e);
             return new ResponseEntity<>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }catch (FieldNotFoundException e){
-            e.printStackTrace();
+            logger.error("Field not found for update: {}", e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("Unexpected error occurred while updating field: {}", e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

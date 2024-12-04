@@ -21,7 +21,7 @@ public class VehicleEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private StatusOfVehicle status;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "staffId", nullable = true)
     @JsonBackReference
     private StaffEntity staff;

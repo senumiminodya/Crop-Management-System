@@ -22,11 +22,11 @@ public class EquipmentEntity implements SuperEntity {
     @Enumerated(EnumType.STRING)
     private StatusOfEquipment status;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "staffId", nullable = true)
     private StaffEntity assignedStaff;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "fieldCode", nullable = true)
     private FieldEntity assignedField;
 

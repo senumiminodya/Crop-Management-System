@@ -21,7 +21,7 @@ public class CropEntity implements SuperEntity {
     private String category;
     private String season;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "fieldCode", nullable = false)
     private FieldEntity field;
 
